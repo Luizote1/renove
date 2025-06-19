@@ -14,31 +14,23 @@ function aplicarTema(nomeTema) {
     });
 }
 
-// AQUI ESTÁ A VERSÃO CORRETA DA FUNÇÃO aplicarTema (com lógica de logo)
 function aplicarTema(nomeTema) {
     const body = document.body;
     const logotipo = document.getElementById('logotipoPrincipal'); 
     const listaTemasOpcoes = document.querySelectorAll('#temasPopup .lista-temas li');
-    const TODOS_OS_TEMAS_FUNCAO = ['theme-claro', 'theme-escuro', 'theme-claro-azul', 'theme-claro-roxo', 'theme-escuro-azul', 'theme-escuro-roxo']; 
-    TODOS_OS_TEMAS_FUNCAO.forEach(t => body.classList.remove(t)); 
+    TODOS_OS_TEMAS.forEach(t => body.classList.remove(t)); 
     body.classList.add(nomeTema);
 
     localStorage.setItem('temaRenoveApp', nomeTema);
 
-    // Obtenha o nome do repositório (ex: 'meu-projeto')
-    // Isso assume que o nome do repositório é o primeiro segmento depois do domínio
-    const repoName = window.location.pathname.split('/')[1]; 
-
     if (logotipo) {
         if (nomeTema.includes('escuro')) {
-            // Caminho ABSOLUTO a partir da raiz do seu site GitHub Pages
-            logotipo.src = `/${repoName}/Imgs/logotipo_dark.png`; 
+            logotipo.src = `/renove/Imgs/logotipo.png`; 
         } else {
             // Caminho ABSOLUTO a partir da raiz do seu site GitHub Pages
-            logotipo.src = `/${repoName}/Imgs/logotipo.png`; 
+            logotipo.src = `/renove/Imgs/logotipo.png`; 
         }
     }
-
     listaTemasOpcoes.forEach(li => {
         li.classList.toggle('tema-ativo', li.dataset.tema === nomeTema);
     });
