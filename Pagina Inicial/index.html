@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../Imgs/logo.png"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renove Farmácia</title>
+    <link rel="stylesheet" href="../CSS/estilo.css"> <script src="../JS/script.js" defer></script> </head>
+
+<body>
+    <div id="loadingOverlay" class="loading-overlay">
+        <svg class="pill-loader-svg" viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg">
+            <path class="pill-half-filled" d="M50 0 L15 0 A15 15 0 0 0 15 30 L50 30 Z" />
+            <path class="pill-half-outline" d="M50 0 L85 0 A15 15 0 0 1 85 30 L50 30 Z" />
+        </svg>
+    </div>
+    <header class="barra-navegacao">
+        <div class="logo">
+            <a href="index.html" style="cursor: pointer;">
+                <img src="../Imgs/logotipo.png" alt="Logo Renove" id="logotipoPrincipal"> </a>
+        </div>
+
+        <div class="form-busca-no-header">
+            <div class="barra-pesquisa">
+                <input type="text" id="buscaHeaderGlobal" name="pesquisa" placeholder="O que você procura?">
+            </div>
+        </div>
+
+        <nav style="display: flex; align-items: center;">
+            <ul class="menu-navegacao">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="produtos.html">Produtos</a></li> <li id="nav-registrar"><a href="../Pagina de login/cadastrar.html">Registrar</a></li> <li id="nav-login"><a href="../Pagina de login/login.html">Login</a></li> </ul>
+
+            <div style="position: relative; margin-left: 15px;">
+                <button class="botao-abrir-temas" id="botaoAbrirTemasPopup" aria-label="Selecionar tema">
+                    <svg width="256px" height="256px" viewBox="0 0 48.00 48.00" id="b"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="3" class="icone-tema">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <defs>
+                                <style>
+                                    .c {
+                                        fill: none;
+                                        stroke-linecap: round;
+                                        stroke-linejoin: round;
+                                    }
+                                </style>
+                            </defs>
+                            <path class="c"
+                                d="m41.4002,26.829c1.0929-1.0929,1.3734-2.752,.6987-4.1425-1.356-2.7944-3.5771-6.4401-6.936-9.8573-3.5628-3.6245-7.1565-5.7208-9.9318-7.004-1.3664-.6318-2.9803-.3211-4.0448.7434l-12.0146,12.0146c-1.4136,1.4136-1.4136,3.7055,0,5.1191l5.0474,5.0474-7.5446,7.5446c-1.3601,1.3601-1.5606,3.5977-.2733,5.027,1.3728,1.5242,3.7228,1.5701,5.1546.1383l7.6866-7.6866,5.0474,5.0474c1.4136,1.4136,3.7055,1.4136,5.1191,0l11.9914-11.9914Z">
+                            </path>
+                            <line class="c" x1="13.4895" y1="14.2652" x2="33.7268" y2="34.5025"></line>
+                        </g>
+                    </svg>
+                </button>
+                <div id="temasPopup" class="temas-popup-flutuante">
+                    <div class="temas-popup-conteudo">
+                        <h4>Selecionar Tema</h4>
+                        <ul class="lista-temas">
+                            <li data-tema="theme-claro">Claro (Padrão)</li>
+                            <li data-tema="theme-escuro">Escuro (Padrão)</li>
+                            <li data-tema="theme-claro-azul">Claro Azul</li>
+                            <li data-tema="theme-claro-roxo">Claro Roxo</li>
+                            <li data-tema="theme-escuro-azul">Escuro Azul</li>
+                            <li data-tema="theme-escuro-roxo">Escuro Roxo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div style="position: relative; margin-left: 15px;">
+                <a href="#" class="link-carrinho-header" id="iconeCarrinhoParaPopup"
+                    aria-label="Ver carrinho de compras">
+                    <svg class="icone-carrinho" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        fill="currentColor" viewBox="0 0 16 16">
+                        <path
+                            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                    </svg>
+                    <span id="contadorItensCarrinho" class="contador-carrinho-header">1</span>
+                </a>
+                <div id="carrinhoPopupExemplo" class="carrinho-popup-flutuante">
+                    <div class="carrinho-popup-conteudo">
+                        <button id="fecharCarrinhoPopupExemplo" class="fechar-popup-carrinho"
+                            aria-label="Fechar popup do carrinho">&times;</button>
+                        <h4>Item no Carrinho (Exemplo)</h4>
+                        <div id="popupProdutoInfoExemplo">
+                            <img src="../Imgs/P1 - Far away.png" alt="Far Away Original Deo Parfum" class="popup-produto-img" id="popupImagemProduto">
+                            <div class="popup-produto-detalhes">
+                                <h4 id="popupNomeProduto">Far Away Original Deo Parfum</h4>
+                                <p class="popup-produto-preco" id="popupPrecoProduto">R$ 79,90</p>
+                                <p style="font-size:0.8em; color: #777;" id="popupQuantidadeProduto">Quantidade: 1</p>
+                                <p style="font-size:0.8em; color: #555; display:none;"
+                                    id="popupDescricaoOriginalProduto">Deo Parfum feminino floral adocicado.</p>
+                            </div>
+                        </div>
+                        <a href="../Pagina_Carrinho/carrinho.html" class="botao-popup-ver-carrinho"><b>Ver Carrinho
+                                Completo</b></a> </div>
+                </div>
+            </div>
+        </nav>
+        <button class="menu-hamburguer" onclick="alternarMenu()">☰</button>
+    </header>
+
+    <main class="conteudo-principal">
+        <section class="banner">
+            <div class="texto-banner">
+                <h1>Cuide de você com a <span>Renove</span></h1>
+                <p>Os melhores cosméticos e cuidados para você</p>
+                <a href="../Pagina Inicial/produtos.html" class="botao">Ver Produtos</a> </div>
+            <div class="imagem-banner">
+                <img src="../Imgs/banner.png" alt="Produtos Renove"> </div>
+        </section>
+
+        <style>
+            .secao-divisor-ondulado {
+                width: 100%;
+                line-height: 0;
+            }
+
+            .onda-svg {
+                display: block;
+                width: 100%;
+                height: 300px;
+                margin-top: -80px;
+                margin-bottom: -80px;
+            }
+
+            .onda-svg path {
+                fill: var(--cor-primaria);
+                filter: drop-shadow(0 2px 8px var(--sombra));
+            }
+        </style> <section class="categorias">
+            <div class="cartao-produto">
+                <img src="../Imgs/P1 - Far away.png" alt="Far Away Deo Parfum" /> <h3>Far Away Deo Parfum</h3>
+                <p class="descricao">Deo Parfum feminino floral adocicado.</p>
+                <p class="preco">R$ 79,90</p>
+                <a href="compra.html?id=1" class="botao btn-adicionar-carrinho-lista" data-id-produto-lista="1"> <svg width="18px" height="18px" viewBox="0 0 24 24" fill="currentColor"
+                        xmlns="http:/www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M2.08416 2.7512C2.22155 2.36044 2.6497 2.15503 3.04047 2.29242L3.34187 2.39838C3.95839 2.61511 4.48203 2.79919 4.89411 3.00139C5.33474 3.21759 5.71259 3.48393 5.99677 3.89979C6.27875 4.31243 6.39517 4.76515 6.4489 5.26153C6.47295 5.48373 6.48564 5.72967 6.49233 6H17.1305C18.8155 6 20.3323 6 20.7762 6.57708C21.2202 7.15417 21.0466 8.02369 20.6995 9.76275L20.1997 12.1875C19.8846 13.7164 19.727 14.4808 19.1753 14.9304C18.6236 15.38 17.8431 15.38 16.2821 15.38H10.9792C8.19028 15.38 6.79583 15.38 5.92943 14.4662C5.06302 13.5523 4.99979 12.5816 4.99979 9.64L4.99979 7.03832C4.99979 6.29837 4.99877 5.80316 4.95761 5.42295C4.91828 5.0596 4.84858 4.87818 4.75832 4.74609C4.67026 4.61723 4.53659 4.4968 4.23336 4.34802C3.91052 4.18961 3.47177 4.03406 2.80416 3.79934L2.54295 3.7075C2.15218 3.57012 1.94678 3.14197 2.08416 2.7512Z">
+                            </path>
+                            <path
+                                d="M7.5 18C8.32843 18 9 18.6716 9 19.5C9 20.3284 8.32843 21 7.5 21C6.67157 21 6 20.3284 6 19.5C6 18.6716 6.67157 18 7.5 18Z">
+                            </path>
+                            <path
+                                d="M16.5 18.0001C17.3284 18.0001 18 18.6716 18 19.5001C18 20.3285 17.3284 21.0001 16.5 21.0001C15.6716 21.0001 15 20.3285 15 19.5001C15 18.6716 15.6716 18.0001 16.5 18.0001Z">
+                            </path>
+                        </g>
+                    </svg>
+                    Comprar
+                </a>
+            </div>
+
+            <div class="cartao-produto">
+                <img src="../Imgs/P2 - Floratablue.png" alt="Floratta Blue Colônia" /> <h3>Floratta Blue Colônia</h3>
+                <p class="descricao">Fragrância feminina floral musk.</p>
+                <p class="preco">R$ 139,90</p>
+                <a href="compra.html?id=2" class="botao btn-adicionar-carrinho-lista" data-id-produto-lista="2"> <svg width="18px" height="18px" viewBox="0 0 24 24" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M2.08416 2.7512C2.22155 2.36044 2.6497 2.15503 3.04047 2.29242L3.34187 2.39838C3.95839 2.61511 4.48203 2.79919 4.89411 3.00139C5.33474 3.21759 5.71259 3.48393 5.99677 3.89979C6.27875 4.31243 6.39517 4.76515 6.4489 5.26153C6.47295 5.48373 6.48564 5.72967 6.49233 6H17.1305C18.8155 6 20.3323 6 20.7762 6.57708C21.2202 7.15417 21.0466 8.02369 20.6995 9.76275L20.1997 12.1875C19.8846 13.7164 19.727 14.4808 19.1753 14.9304C18.6236 15.38 17.8431 15.38 16.2821 15.38H10.9792C8.19028 15.38 6.79583 15.38 5.92943 14.4662C5.06302 13.5523 4.99979 12.5816 4.99979 9.64L4.99979 7.03832C4.99979 6.29837 4.99877 5.80316 4.95761 5.42295C4.91828 5.0596 4.84858 4.87818 4.75832 4.74609C4.67026 4.61723 4.53659 4.4968 4.23336 4.34802C3.91052 4.18961 3.47177 4.03406 2.80416 3.79934L2.54295 3.7075C2.15218 3.57012 1.94678 3.14197 2.08416 2.7512Z">
+                            </path>
+                            <path
+                                d="M7.5 18C8.32843 18 9 18.6716 9 19.5C9 20.3284 8.32843 21 7.5 21C6.67157 21 6 20.3284 6 19.5C6 18.6716 6.67157 18 7.5 18Z">
+                            </path>
+                            <path
+                                d="M16.5 18.0001C17.3284 18.0001 18 18.6716 18 19.5001C18 20.3285 17.3284 21.0001 16.5 21.0001C15.6716 21.0001 15 20.3285 15 19.5001C15 18.6716 15.6716 18.0001 16.5 18.0001Z">
+                            </path>
+                        </g>
+                    </svg>
+                    Comprar
+                </a>
+            </div>
+
+            <div class="cartao-produto">
+                <img src="../Imgs/P3 - hypnose.png" alt="Hypnôse Parfum" /> <h3>Hypnôse Parfum</h3>
+                <p class="descricao">Perfume feminino amadeirado oriental.</p>
+                <p class="preco">R$ 349,90</p>
+                <a href="compra.html?id=3" class="botao btn-adicionar-carrinho-lista" data-id-produto-lista="3"> <svg
+                        width="18px" height="18px" viewBox="0 0 24 24" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M2.08416 2.7512C2.22155 2.36044 2.6497 2.15503 3.04047 2.29242L3.34187 2.39838C3.95839 2.61511 4.48203 2.79919 4.89411 3.00139C5.33474 3.21759 5.71259 3.48393 5.99677 3.89979C6.27875 4.31243 6.39517 4.76515 6.4489 5.26153C6.47295 5.48373 6.48564 5.72967 6.49233 6H17.1305C18.8155 6 20.3323 6 20.7762 6.57708C21.2202 7.15417 21.0466 8.02369 20.6995 9.76275L20.1997 12.1875C19.8846 13.7164 19.727 14.4808 19.1753 14.9304C18.6236 15.38 17.8431 15.38 16.2821 15.38H10.9792C8.19028 15.38 6.79583 15.38 5.92943 14.4662C5.06302 13.5523 4.99979 12.5816 4.99979 9.64L4.99979 7.03832C4.99979 6.29837 4.99877 5.80316 4.95761 5.42295C4.91828 5.0596 4.84858 4.87818 4.75832 4.74609C4.67026 4.61723 4.53659 4.4968 4.23336 4.34802C3.91052 4.18961 3.47177 4.03406 2.80416 3.79934L2.54295 3.7075C2.15218 3.57012 1.94678 3.14197 2.08416 2.7512Z">
+                            </path>
+                            <path
+                                d="M7.5 18C8.32843 18 9 18.6716 9 19.5C9 20.3284 8.32843 21 7.5 21C6.67157 21 6 20.3284 6 19.5C6 18.6716 6.67157 18 7.5 18Z">
+                            </path>
+                            <path
+                                d="M16.5 18.0001C17.3284 18.0001 18 18.6716 18 19.5001C18 20.3285 17.3284 21.0001 16.5 21.0001C15.6716 21.0001 15 20.3285 15 19.5001C15 18.6716 15.6716 18.0001 16.5 18.0001Z">
+                            </path>
+                        </g>
+                    </svg>
+                    Comprar
+                </a>
+            </div>
+
+            <div class="cartao-produto">
+                <img src="../Imgs/P4 - lily.png" alt="Lily Leite Acetinado" /> <h3>Lily Leite Acetinado</h3>
+                <p class="descricao">Hidratação intensa com toque aveludado.</p>
+                <p class="preco">R$ 109,90</p>
+                <a href="compra.html?id=4" class="botao btn-adicionar-carrinho-lista" data-id-produto-lista="4"> <svg
+                        width="18px" height="18px" viewBox="0 0 24 24" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M2.08416 2.7512C2.22155 2.36044 2.6497 2.15503 3.04047 2.29242L3.34187 2.39838C3.95839 2.61511 4.48203 2.79919 4.89411 3.00139C5.33474 3.21759 5.71259 3.48393 5.99677 3.89979C6.27875 4.31243 6.39517 4.76515 6.4489 5.26153C6.47295 5.48373 6.48564 5.72967 6.49233 6H17.1305C18.8155 6 20.3323 6 20.7762 6.57708C21.2202 7.15417 21.0466 8.02369 20.6995 9.76275L20.1997 12.1875C19.8846 13.7164 19.727 14.4808 19.1753 14.9304C18.6236 15.38 17.8431 15.38 16.2821 15.38H10.9792C8.19028 15.38 6.79583 15.38 5.92943 14.4662C5.06302 13.5523 4.99979 12.5816 4.99979 9.64L4.99979 7.03832C4.99979 6.29837 4.99877 5.80316 4.95761 5.42295C4.91828 5.0596 4.84858 4.87818 4.75832 4.74609C4.67026 4.61723 4.53659 4.4968 4.23336 4.34802C3.91052 4.18961 3.47177 4.03406 2.80416 3.79934L2.54295 3.7075C2.15218 3.57012 1.94678 3.14197 2.08416 2.7512Z">
+                            </path>
+                            <path
+                                d="M7.5 18C8.32843 18 9 18.6716 9 19.5C9 20.3284 8.32843 21 7.5 21C6.67157 21 6 20.3284 6 19.5C6 18.6716 6.67157 18 7.5 18Z">
+                            </path>
+                            <path
+                                d="M16.5 18.0001C17.3284 18.0001 18 18.6716 18 19.5001C18 20.3285 17.3284 21.0001 16.5 21.0001C15.6716 21.0001 15 20.3285 15 19.5001C15 18.6716 15.6716 18.0001 16.5 18.0001Z">
+                            </path>
+                        </g>
+                    </svg>
+                    Comprar
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <section class="banner3">
+        <img src="../Imgs/banner3.png" alt="Produtos Renove"> </section>
+
+    <footer class="footer-techmode">
+        <div class="footer-container">
+
+            <div class="footer-coluna" id="footer-logo-col">
+                <img src="../Imgs/logo.png" alt="Logo Tech Mode" class="footer-logo"> <p class="footer-slogan">Inovação e tecnologia ao seu alcance.</p>
+            </div>
+
+            <div class="footer-coluna">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="#">Sobre Nós</a></li>
+                    <li><a href="#">Carreiras</a></li>
+                    <li><a href="#">Imprensa</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-coluna">
+                <h4>Suporte</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Central de Ajuda</a></li>
+                    <li><a href="#">Termos de Serviço</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-coluna">
+                <h4>Siga-nos</h4>
+                <div class="footer-social-links">
+                    <a href="#" aria-label="Facebook" title="Facebook"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+                        </svg></a>
+                    <a href="#" aria-label="Instagram" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.644-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.359 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.359-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.2-4.359-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z" />
+                        </svg></a>
+                    <a href="#" aria-label="Twitter" title="Twitter (X)"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.617l-5.21-6.817-6.044 6.817h-3.308l7.732-8.734-8.232-10.76h6.802l4.555 6.031 5.527-6.031zm-1.4 17.52h2.16l-9.309-12.48h-2.28l9.429 12.48z" />
+                        </svg></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom-bar">
+            <p>&copy; 2025 Tech Mode. Todos os direitos reservados. Desenvolvido por <a
+                    href="https://luizote1.github.io/tech-mode/" target="_blank" rel="noopener noreferrer">Tech
+                    Mode</a>.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
